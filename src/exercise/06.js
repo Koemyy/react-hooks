@@ -18,7 +18,7 @@ class ErrorBoundary extends React.Component {
     render () {
         const {error} = this.state
         if(error) {
-            return <this.props.FallbackComponent error={error}/>
+            return <this.props.FallbackComponent error={error} key={null}/>
         }
         return this.props.children
     }
@@ -81,7 +81,7 @@ function App() {
             <PokemonForm pokemonName={pokemonName} onSubmit={handleSubmit} />
             <hr />
             <div className="pokemon-info">
-                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <ErrorBoundary key={pokemonName} FallbackComponent={ErrorFallback}>
                     <PokemonInfo pokemonName={pokemonName} />
                 </ErrorBoundary>
             </div>
